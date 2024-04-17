@@ -1,0 +1,2 @@
+- record win/loss counts per word, plus clues needed - to help understand difficulty of words
+- have word groups

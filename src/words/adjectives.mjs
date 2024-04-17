@@ -1,4 +1,6 @@
-export default [
+export default {
+  description: "Adjectives",
+  words: [
     {
       "word": "happy",
       "clues": [
@@ -144,3 +146,4 @@ export default [
       ]
     }
   ]
+}

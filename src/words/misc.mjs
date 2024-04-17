@@ -1,4 +1,6 @@
-export default [
+export default {
+    description: "Pronouns, prepositions, determiners, interjections, and articles",
+    words: [
     {
       "word": "he",
       "clues": [
@@ -156,15 +158,7 @@ export default [
       "clues": [
         "It's an interjection expressing pain or discomfort.",
         "It's often used in response to physical injury.",
-        "It's synonymous with 'ow' or 'ouchie'."
-      ]
-    },
-    {
-      "word": "ah",
-      "clues": [
-        "It's an interjection expressing understanding, realization, or surprise.",
-        "It's often used in response to sudden comprehension.",
-        "It's synonymous with 'oh' or 'aha'."
+        "It's starts with 'O'."
       ]
     },
     {
@@ -392,3 +386,4 @@ export default [
       ]
     }
   ]
+}

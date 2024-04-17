@@ -1,4 +1,6 @@
-export default [
+export default {
+  description: "Adverbs and conjunctions",
+  words: [
     {
       "word": "once",
       "clues": [
@@ -60,7 +62,7 @@ export default [
       "clues": [
         "It indicates a location away from the speaker or the current situation.",
         "It's used to refer to a specific place or position.",
-        "It's often used in phrases like 'over _____' or 'out _____'."
+        "It's often used in phrases like 'over there' or 'out there'."
       ]
     },
     {
@@ -92,7 +94,7 @@ export default [
       "clues": [
         "It indicates a point in time that follows or comes after another event.",
         "It's used to refer to a specific time or sequence of events.",
-        "It's often used in phrases like 'back ___' or 'since ____'."
+        "It's often used in phrases like 'back then' or 'since then'."
       ]
     },
     {
@@ -112,4 +114,5 @@ export default [
       ]
     }
   ]
+}
   
