@@ -1,8 +1,8 @@
-import adjectives from "../words/adjectives.mjs";
-import adverbs from "../words/adverbs.mjs";
-import misc from "../words/misc.mjs";
-import nouns from "../words/nouns.mjs";
-import verbs from "../words/verbs.mjs";
+import adjectives from "../words/adjectives.js";
+import adverbs from "../words/adverbs.js";
+import misc from "../words/misc.js";
+import nouns from "../words/nouns.js";
+import verbs from "../words/verbs.js";
 
 const words = [
     ...adjectives.words,

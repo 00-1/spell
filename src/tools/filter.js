@@ -1,4 +1,4 @@
-import clueData from "../words/misc.mjs";
+import clueData from "../words/misc.js";
 
 console.log({clueData})
 

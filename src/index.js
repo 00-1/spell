@@ -1,65 +1,62 @@
-import React, { useState } from "https://cdn.skypack.dev/react";
+import React from "https://cdn.skypack.dev/react";
 import ReactDOM from "https://cdn.skypack.dev/react-dom";
-import words from "./tools/words.mjs";
-import pick from "./tools/pick.mjs";
-import hide from "./tools/hide.mjs";
+import adoptStyles from "./css/adopt.js"
+import useGame from "./hooks/useGame.js";
 
-// Define a simple functional component called Hello
-const Hello = () => {
-    const [word, setWord] = useState()
-    const [clues, setClues] = useState([])
-    const [guess, setGuess] = useState('');
-    const [clue, setClue] = useState(0);
-    const [result, setResult] = useState('');
-    const [state, setState] = useState('stop');
+// adopt styles before rendering 
+await adoptStyles(['game', 'button', 'input'])
 
-    const start = () => {
-        const picked = pick(words)
-        console.log({picked})
-        return setWord(picked.word) 
-            || setClues(picked.clues)
-            || setState('play')
-            || setGuess('')
-            || setClue(0)
-    }
-    const attempt = (event) => {
-        event.preventDefault();
-        if (guess===word) return setResult('win') || setState('stop')
-        return fail()
-    }
+const Button = props => <button {...{
+    ...props, 
+    className: "Button"
+}} />
 
-    const fail = () => {
-        if (clue<2) return setClue(clue+1)
-        return setResult('fail') || setState('stop')
-    }
+const Input = props => <input {...{
+    ...props, 
+    className: "Input",
+    autoFocus: true
+}} />
 
-    if (state==='play') return (
-        <div>
-            <p>[clue #{clue+1}]: {clues[clue]}</p>
-            <form onSubmit={attempt}>
-                <input
-                    value={guess}
-                    onChange={({target: { value }}) => setGuess(value)}
-                />
-                <button type="submit">try</button>
-                <button onClick={fail}>next clue</button>
-            </form>
-        </div>
-    );
+// screen shown when playing the game
+const Play = ({
+    nextClue,
+    attempt, 
+    guess,
+    changeGuess,
+    text
+}) => <>
+    <p>{text('clue')}</p>
+    <form onSubmit={attempt}>
+        <Input
+            value={guess}
+            onChange={changeGuess}
+        />
+        <Button type="submit">try</Button>
+        <Button onClick={nextClue}>next clue</Button>
+    </form>
+</>
 
-    if (state==='stop') return (
-        <div>
-            {result && <p>
-                it was "{word}".<br />
-                you {result}, with {clue} extra clues.
-            </p>}
-            <button onClick={start}>play{result && ' again?'}</button>  
-        </div>
-    );
+// screen shown when the game stops
+const Stop = ({
+    start,
+    text
+}) => <>
+    <p>{text('result')}</p>
+    <Button onClick={start}>{text('play')}</Button> 
+</>
+
+// main game component
+const Game = () => {
+    const {state, ...props} = useGame();
+
+    return <div className="Game"> {
+        state==='play' 
+            ? <Play {...props} /> 
+            : <Stop {...props} />     
+    } </div>
 };
 
-// Render the Hello component into the root element
 ReactDOM.render(
-    <Hello />,
+    <Game />,
     document.getElementById('root')
 );
