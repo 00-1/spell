@@ -8,8 +8,12 @@ medium
 - press enter to progress though all screens
 - show word category
 - show word length
+- should adopt styles be a hook?
+- await imports?
 
 advnced
+- show wrong letters
+- mark as not helpful
 - record win/loss counts per word, plus clues needed - to help understand difficulty of words
 - allow user to edit groups
 - allow user to add/edit words & clues
@@ -17,7 +21,6 @@ advnced
 
 gamify
 - collect coins?
-
 
 visual
 - responsive deisgn
