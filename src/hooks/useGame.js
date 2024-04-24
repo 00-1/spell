@@ -1,9 +1,8 @@
-import { useState, useEffect } from "https://cdn.skypack.dev/react";
 import words from "../tools/words.js";
 import pick from "../tools/pick.js";
 import hide from "../tools/hide.js";
 
-export default () => {
+export default ({useEffect, useState}) => function useGame () {
 
     const [word, setWord] = useState()
     const [clues, setClues] = useState([])
@@ -27,7 +26,7 @@ export default () => {
         // Clean up event listener when component unmounts
         return () =>
           document.removeEventListener('keypress', handleKeyPress);
-      }, [playing, guess, clueNumber]); 
+    }, [playing, guess, clueNumber]); 
     
 
     // function to start the game
@@ -74,7 +73,6 @@ export default () => {
             : `Try this spelling game.`,
         play: () => `Play${result && ' again?'}`
     })[reference]()
-
 
     return {
         guess,

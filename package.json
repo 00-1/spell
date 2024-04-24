@@ -1,0 +1,20 @@
+{
+    "name": "spell",
+    "version": "1.0.0",
+    "description": "A spelling game",
+    "main": "index.js",
+    "exports": "./index.js",
+    "type": "module",
+    "scripts": {
+      "test": "node test",
+      "start": "http-server src -p 8082 --proxy http://localhost:8082?"
+    },
+    "keywords": [
+      "spell",
+      "spell-check",
+      "language"
+    ],
+    "author": "Your Name",
+    "license": "MIT"
+  }
+  

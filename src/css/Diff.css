@@ -1,0 +1,12 @@
+div.Diff {
+    background: black
+}
+div.Diff span.yes {
+    color: green
+}
+div.Diff span.near {
+    color: blue
+}
+div.Diff span.no {
+    color: red
+}

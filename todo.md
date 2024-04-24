@@ -2,6 +2,10 @@ basic
 - get rid of capitals
 - pre-hide word in clues
 - don't redo words
+- after first wrong guess, highlight the word, so next keypress replaces it
+- lint
+- custom logger
+- move adoptStyles in to wrapper function? 
 
 medium
 - have word groups
