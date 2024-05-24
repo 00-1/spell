@@ -7,10 +7,14 @@ export const [
     p,
     div,
     span,
+    ul,
+    li
 ] = [
     'button', 
     'input', 
     'p',
     'div',
     'span',
+    'ul',
+    'li'
 ].map(createElement)

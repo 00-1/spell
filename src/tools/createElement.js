@@ -4,7 +4,7 @@
 // - An array
 // - A string
 // Otherwise it's props
-const childOrProps = ({arg1 = {}, className, arg3}) => {
+export const childOrProps = ({arg1 = {}, className, arg3}) => {
     const [ props, children ] = 
         arg1.$$typeof === Symbol.for('react.element')
         || Array.isArray(arg1)
@@ -19,12 +19,24 @@ const childOrProps = ({arg1 = {}, className, arg3}) => {
         },
         key: props && props.key || 0
     }
-}
+};
+
+// Inject dependencies
+export const injectDeps = (fn, components, hooks) => fn(components, hooks);
 
 // Create a react element
-export default type => (arg1, className, arg3) => ({
-    $$typeof: Symbol.for('react.element'),
-    type,
-    ref: null,
-    ...childOrProps({arg1, className, arg3})
-})
+export default (fnOrString, components, hooks) => {
+
+    // Inject deps if it's a function
+    const type = typeof fnOrString === 'function'
+        ? injectDeps(fnOrString, components, hooks)
+        : fnOrString
+
+    // Convert to object
+    return (arg1, className, arg3) => ({
+        $$typeof: Symbol.for('react.element'),
+        type,
+        ref: null,
+        ...childOrProps({arg1, className, arg3})
+    })
+}

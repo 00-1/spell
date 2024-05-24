@@ -1,5 +1,5 @@
 import createElement from '../../tools/createElement.js'
-import hooks from '../../hooks/index.js'
+import * as hooks from '../../hooks/index.js'
 import _Button from './Button.js'
 import _Input from './Input.js'
 import _Paragraph from './Paragraph.js'
@@ -29,6 +29,4 @@ export const [
     _Button,
     _Input,
     _Paragraph,
-].map(injectDeps => createElement(
-    injectDeps(html, hooks)
-))
+].map(fn => createElement(fn, html, hooks));

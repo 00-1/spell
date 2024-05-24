@@ -1,9 +1,13 @@
 import createElement from '../../tools/createElement.js'
-import hooks from '../../hooks/index.js'
+import _GameContext from "../../contexts/GameContext.js"
+import * as hooks from '../../hooks/index.js'
 import _Game from './Game.js'
+import _Playing from './Playing.js'
+import _Stopped from './Stopped.js'
 import * as html from '../html/index.js'
-import * as basic from '../basic/index.js'
 import * as widget from '../widget/index.js'
+
+
 
 /*
  * Exports components as functions.
@@ -16,18 +20,23 @@ import * as widget from '../widget/index.js'
  * - Otherwise it's mapped to the `props` argument.
  */
 
+// export context first
+export const GameContext = 
+    createElement(() => _GameContext.Provider);
+
 // Custom container components
 export const [
-    Game,
+    Playing,
+    Stopped,
+    Game
 ] = [
-    _Game,
-].map(injectDeps => createElement(
-    injectDeps(
-        {
-            ...html, 
-            ...basic,
-            ...widget
-        },
-        hooks
-    )
+    _Playing,
+    _Stopped,
+    _Game
+].map(fn => createElement(
+    fn, 
+    {GameContext, ...html}, 
+    hooks
 ))
+
+

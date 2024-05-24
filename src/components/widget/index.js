@@ -1,9 +1,12 @@
 import createElement from '../../tools/createElement.js'
-import hooks from '../../hooks/index.js'
-import _Play from './Play.js'
-import _Stop from './Stop.js'
+import * as hooks from '../../hooks/index.js'
 import _Result from './Result.js'
 import _Diff from './Diff.js'
+import _PlayButton from './PlayButton.js'
+import _Clue from './Clue.js'
+import _Guess from './Guess.js'
+import _NextClueButton from './NextClueButton.js'
+import _TryButton from './TryButton.js'
 import * as html from '../html/index.js'
 import * as basic from '../basic/index.js'
 
@@ -20,21 +23,26 @@ import * as basic from '../basic/index.js'
 
 // Custom container components
 export const [
-    Play,
-    Stop,
     Result,
     Diff,
+    PlayButton,
+    Clue,
+    Guess,
+    TryButton,
+    NextClueButton
 ] = [
-    _Play,
-    _Stop,
     _Result,
     _Diff,
-].map(injectDeps => createElement(
-    injectDeps(
-        {
-            ...html, 
-            ...basic
-        },
-        hooks
-    )
+    _PlayButton,
+    _Clue,
+    _Guess,
+    _TryButton,
+    _NextClueButton
+].map(fn => createElement(
+    fn,
+    {
+        ...html, 
+        ...basic
+    },
+    hooks
 ))

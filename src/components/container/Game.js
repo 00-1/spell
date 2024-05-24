@@ -1,18 +1,10 @@
-import { useGame } from "../../hooks/index.js";
-
-// main game component
+// Screen shown while playing.
 export default (
-    {div, Play, Stop}, 
+    {div},
     {useAdoptStyles}
-) => function Game () {
+) => function Game ({
+    children
+}) {
     const {ready} = useAdoptStyles(['Game'])
-
-    const {playing, ...props} = useGame();
-
-    return ready && div(
-         playing 
-            ? Play(props)
-            : Stop(props),
-        "Game"     
-    )
+    return ready && div(children, "Game")
 };

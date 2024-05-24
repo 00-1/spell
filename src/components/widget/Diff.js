@@ -1,17 +1,19 @@
 import diff from '../../tools/diff.js'
 
 export default (
-    {div, span},
-    {useAdoptStyles}
-) => function Diff ({word, guess}) { 
+    {ul, li},
+    {useAdoptStyles, useGameContext}
+) => function Diff () { 
     const {ready} = useAdoptStyles(['Diff'])
+    const {word, guesses} = useGameContext();
 
-    return ready && div(
-        diff({word, guess})
-            .map(({letter, match}) => span(
+    return ready && ul(
+        guesses.map(guess => li(
+            diff({word, guess}).map(({letter, match}) => span(
                 letter,
                 match
-            )),
+            ))
+        )),
         "Diff"
-    )
+    )     
 };

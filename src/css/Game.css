@@ -1,3 +1,7 @@
 div.Game, .Game button, .Game input {
-    font-family:'Courier New', Courier, monospace
+    font-family:'Courier New', Courier, monospace;
+}
+div.Game {
+    background: black;
+    color: white;
 }

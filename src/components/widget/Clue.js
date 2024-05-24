@@ -7,6 +7,6 @@ export default (
     const {text} = useGameContext();
 
     return Paragraph(
-        text('result')
+        text('clue')
     )
 }

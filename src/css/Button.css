@@ -1,6 +1,6 @@
 button.Button {
-    background-color: black;
-    color: white; /* Text color */
+    background-color: yellow;
+    color: red; /* Text color */
     border: none; /* Remove border */
     padding: 1em; /* Adjust padding */
     margin: 0 0.5em 0 0;

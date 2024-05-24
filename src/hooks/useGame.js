@@ -7,6 +7,7 @@ export default ({useEffect, useState}) => function useGame () {
     const [word, setWord] = useState()
     const [clues, setClues] = useState([])
     const [guess, setGuess] = useState('');
+    const [guesses, setGuesses] = useState([]);
     const [clueNumber, setClueNumber] = useState(0);
     const [result, setResult] = useState('');
     const [playing, setPlaying] = useState(false);
@@ -38,14 +39,16 @@ export default ({useEffect, useState}) => function useGame () {
             || setPlaying(true)
             || setGuess('')
             || setClueNumber(0)
+            || setGuesses([])
     }
 
     // guess a word, win if it's right
     // otherwise give next clue
     const attempt = () => {
+        setGuesses([...guesses, guess])
+        setGuess('')
         if (guess===word) return setResult('win') 
             || setPlaying(false)
-            || setGuess('')
         return nextClue()
     }
 
@@ -76,6 +79,7 @@ export default ({useEffect, useState}) => function useGame () {
 
     return {
         guess,
+        guesses,
         playing,
         start,
         nextClue,

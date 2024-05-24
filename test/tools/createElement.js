@@ -4,6 +4,7 @@ import {deepStrictEqual} from 'assert'
 const elementFn = createElement('span')
 const element = elementFn('text', 'Text')
 const props = {onClick: "Click"}
+const list = ['a', 'b', 'b']
 
 const expectedResult = {
     '$$typeof': Symbol.for('react.element'),
@@ -32,10 +33,10 @@ export default () => deepStrictEqual(
     },
     "createElement should make props props"
 )  || deepStrictEqual(
-    elementFn(['a'], 'List'),
+    elementFn(list, 'List'),
     {
         ...expectedResult,
-        props: { ...props, className: 'List', children: ['a']}
+        props: { className: 'List', children: list}
     },
     "createElement should make array children"
 )
